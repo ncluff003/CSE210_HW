@@ -12,7 +12,13 @@ public class Word
 
   public void Hide()
   {
-
+    string newWord = "";
+    for (int i = 0; i < this._text.Count(); i++)
+    {
+      newWord += "_";
+    }
+    this._text = newWord;
+    this._isHidden = true;
   }
 
   public void Show() { }
@@ -24,6 +30,6 @@ public class Word
 
   public string GetDisplayText()
   {
-    return "";
+    return $"{this._text}";
   }
 }
