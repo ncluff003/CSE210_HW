@@ -2,34 +2,34 @@ using System;
 
 public class Word
 {
-  private string _text;
-  private bool _isHidden = false;
+    private string _text;
+    private bool _isHidden = false;
 
-  public Word(string text)
-  {
-    _text = text;
-  }
-
-  public void Hide()
-  {
-    string newWord = "";
-    for (int i = 0; i < this._text.Count(); i++)
+    public Word(string text)
     {
-      newWord += "_";
+        _text = text;
     }
-    this._text = newWord;
-    this._isHidden = true;
-  }
 
-  public void Show() { }
+    public void Hide()
+    {
+        string newWord = "";
+        for (int i = 0; i < this._text.Count(); i++)
+        {
+            newWord += "_";
+        }
+        this._text = newWord;
+        this._isHidden = true;
+    }
 
-  public bool IsHidden()
-  {
-    return _isHidden;
-  }
+    public void Show() { }
 
-  public string GetDisplayText()
-  {
-    return $"{this._text}";
-  }
+    public bool IsHidden()
+    {
+        return _isHidden;
+    }
+
+    public string GetDisplayText()
+    {
+        return $"{this._text}";
+    }
 }
