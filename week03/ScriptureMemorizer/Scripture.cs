@@ -15,7 +15,6 @@ public class Scripture
         {
             this._words.Add(new Word(word));
         }
-
     }
 
     public void HideRandomWords(int numberToHide)
@@ -50,8 +49,9 @@ public class Scripture
             {
                 wordIndex = random.Next(0, this._words.Count);
             }
-        }  
+        }
     }
+
     public string GetDisplayText()
     {
         Console.Clear();
@@ -69,7 +69,7 @@ public class Scripture
                 text += $"{this._words[i].GetDisplayText()} ";
             }
         }
-    
+
         return $"{this._reference.GetDisplayText()} {text}";
     }
 
