@@ -23,4 +23,14 @@ public class Customer
     {
         return this._address.IsUnitedStatesAddress();
     }
+
+    public string DisplayName()
+    {
+        return this._name;
+    }
+
+    public string DisplayCustomerAddress()
+    {
+        return this._address.DisplayAddress();
+    }
 }

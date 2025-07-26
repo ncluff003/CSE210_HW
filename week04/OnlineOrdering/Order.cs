@@ -15,9 +15,19 @@ public class Order
         double total = 0.00;
         foreach (Product product in this._products)
         {
-            total += product.CalculateTotal();
+            total += product.CalculatePrice();
         }
         return total;
+    }
+
+    public string DisplayPackingSlip()
+    {
+        return $"Date: {DateTime.Now}\n\nShip To:\n{this._customer.DisplayName()}\n{this._customer.DisplayCustomerAddress()}\n\n";
+    }
+
+    public string DisplayShippingLabel()
+    {
+        return "";
     }
 }
 

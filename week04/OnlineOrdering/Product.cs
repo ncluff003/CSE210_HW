@@ -15,7 +15,7 @@ public class Product
         this._quantity = quantity;
     }
 
-    public double CalculateTotal()
+    public double CalculatePrice()
     {
         return this._price * this._quantity;
     }
