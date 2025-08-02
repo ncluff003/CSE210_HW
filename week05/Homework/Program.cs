@@ -19,6 +19,7 @@ class Program
             "European History",
             "The Causes of World War II"
         );
+
         string writingSummary = writing.GetSummary();
         string writingPaper = writing.GetWritingInformation();
         Console.WriteLine(writingSummary);

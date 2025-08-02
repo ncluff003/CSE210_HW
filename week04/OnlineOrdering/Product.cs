@@ -19,4 +19,19 @@ public class Product
     {
         return this._price * this._quantity;
     }
+
+    public int GetQuantity()
+    {
+        return this._quantity;
+    }
+
+    public int GetId()
+    {
+        return this._id;
+    }
+
+    public string GetName()
+    {
+        return this._name;
+    }
 }

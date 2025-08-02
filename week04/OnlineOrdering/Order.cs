@@ -10,6 +10,13 @@ public class Order
         this._customer = customer;
     }
 
+    public void AddProduct(string name, int id, double price = 0.00, int quantity = 1)
+    {
+        Product product = new Product(name, id, price, quantity);
+
+        this._products.Add(product);
+    }
+
     public double CalculateTotal()
     {
         double total = 0.00;
@@ -22,12 +29,42 @@ public class Order
 
     public string DisplayPackingSlip()
     {
-        return $"Date: {DateTime.Now}\n\nShip To:\n{this._customer.DisplayName()}\n{this._customer.DisplayCustomerAddress()}\n\n";
+        string packingSlip =
+            $"Date: {DateTime.Now}\n\nShip To:\n{this._customer.DisplayName()}\n{this._customer.DisplayCustomerAddress()}\n\n";
+
+        // Quantity | Id | Product Description | Price\n
+
+        packingSlip += String.Format(
+            "{0, 0} | {1, 0} | {2, 0} | {3, 0}",
+            "Quantity",
+            "Id",
+            "Product Description",
+            "Price\n"
+        );
+
+        foreach (Product product in this._products)
+        {
+            packingSlip += String.Format(
+                "{0, 0} | {1, 0} | {2, 0} | {3, 0}",
+                $"{product.GetQuantity()}",
+                $"{product.GetId()}",
+                $"{product.GetName()}",
+                $"{product.CalculatePrice():F2}\n"
+            );
+        }
+
+        int shippingCost = this._customer.LivesInUnitedStates() ? 5 : 35;
+
+        packingSlip += $"\nSubTotal: {this.CalculateTotal():F2}";
+        packingSlip += $"\nShipping: ${shippingCost}";
+        packingSlip += $"\nTotal: {this.CalculateTotal() + shippingCost:F2}";
+
+        return packingSlip;
     }
 
     public string DisplayShippingLabel()
     {
-        return "";
+        return $"To:\n{this._customer.DisplayName()}\n{this._customer.DisplayCustomerAddress()}";
     }
 }
 
