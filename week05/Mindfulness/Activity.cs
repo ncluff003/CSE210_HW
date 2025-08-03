@@ -39,13 +39,17 @@ public class Activity
 
     public void DisplayCongratulations()
     {
-        Console.WriteLine("Well Done!!");
+        Console.WriteLine("Well Done!!\n");
         this.ShowSpinner();
+
+        Console.WriteLine(
+            $"You have completed {this._duration} seconds of the {this._activity} Activity!\n"
+        );
     }
 
     public void ShowCountdown() { }
 
-    public void ShowSpinner()
+    public void ShowSpinner(int seconds = 10)
     {
         List<string> animationStrings = new List<string>();
         animationStrings.Add("|");
@@ -54,7 +58,7 @@ public class Activity
         animationStrings.Add("\\");
 
         DateTime startTime = DateTime.Now;
-        DateTime endTime = startTime.AddSeconds(10);
+        DateTime endTime = startTime.AddSeconds(seconds);
 
         int i = 0;
 

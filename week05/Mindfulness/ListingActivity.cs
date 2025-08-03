@@ -7,4 +7,19 @@ public class ListingActivity : Activity
 
     public ListingActivity(string activity, string description)
         : base(activity, description) { }
+
+    public void AddPrompt(string prompt)
+    {
+        this._prompts.Add(prompt);
+    }
+
+    public void Run()
+    {
+        this.DisplayIntroduction();
+        Console.Clear();
+
+        Console.WriteLine("Get Ready...");
+
+        this.ShowSpinner();
+    }
 }
