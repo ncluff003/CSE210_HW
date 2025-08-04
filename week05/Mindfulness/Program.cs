@@ -59,7 +59,24 @@ class Program
             }
             else if (userInput == 3)
             {
-                Console.WriteLine("\nThis activity is not ready yet for your awesomeness!\n");
+                ListingActivity listing = new ListingActivity(
+                    "Listing",
+                    "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area."
+                );
+
+                listing.AddPrompt("Who are the people that you appreciate?");
+                listing.AddPrompt("What are personal strengths of yours?");
+                listing.AddPrompt("Who are people that you have helped this week?");
+                listing.AddPrompt("When have you felt the Holy Ghost this month?");
+                listing.AddPrompt("Who are some of your personal heroes?");
+                listing.AddPrompt(
+                    "What are some things you can learn from a recent difficult period?"
+                );
+                listing.AddPrompt(
+                    "How have you noticed the hand of God in your own life this month?"
+                );
+
+                listing.Run();
             }
             else
             {

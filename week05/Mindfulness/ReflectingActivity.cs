@@ -21,7 +21,7 @@ public class ReflectingActivity : Activity
     public void GetRandomPrompt()
     {
         Random random = new Random();
-        int index = random.Next(_prompts.Count);
+        int index = random.Next(this._prompts.Count);
 
         Console.WriteLine($" --- {this._prompts[index]} --- ");
     }
