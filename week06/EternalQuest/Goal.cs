@@ -13,7 +13,27 @@ public class Goal
         this._points = points;
     }
 
+    public string RetrieveGoal()
+    {
+        return this._shortName;
+    }
+
+    public string RetrieveDescription()
+    {
+        return this._description;
+    }
+
+    public int RetrievePoints()
+    {
+        return this._points;
+    }
+
     public virtual void RecordEvent() { }
+
+    public virtual string WriteDetails()
+    {
+        return "";
+    }
 
     public virtual Boolean IsComplete()
     {

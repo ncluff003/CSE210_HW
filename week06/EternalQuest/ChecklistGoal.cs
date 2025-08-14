@@ -13,20 +13,60 @@ public class ChecklistGoal : Goal
         this._bonus = bonus;
     }
 
-    public override void RecordEvent() { }
+    public void SetAmountCompleted(int amount)
+    {
+        if (amount < 0 || amount > this._target)
+        {
+            throw new ArgumentOutOfRangeException(
+                "Amount completed cannot be negative or exceed target."
+            );
+        }
+        this._amountCompleted = amount;
+    }
+
+    public int RetrieveAmountCompleted()
+    {
+        return this._amountCompleted;
+    }
+
+    public int RetrieveTarget()
+    {
+        return this._target;
+    }
+
+    private void IncrementAmountCompleted()
+    {
+        if (this._amountCompleted < this._target)
+        {
+            this._amountCompleted++;
+        }
+    }
+
+    public override void RecordEvent()
+    {
+        this.IncrementAmountCompleted();
+    }
+
+    public override string WriteDetails()
+    {
+        return $"Checklist Goal:{this.RetrieveGoal()}|{this.RetrieveDescription()}|{this.RetrievePoints()}|{this._bonus}|{this.RetrieveAmountCompleted()}|{this.RetrieveTarget()}";
+    }
 
     public override Boolean IsComplete()
     {
-        return false;
+        return this._amountCompleted == this._target;
     }
 
     public override string GetDetailsString()
     {
-        return "";
+        return $"{this.RetrieveGoal()} ({this.RetrieveDescription()}) -- Currently completed: {this.RetrieveAmountCompleted()} / {this.RetrieveTarget()}";
     }
 
     public override string GetStringRepresentation()
     {
-        return "";
+        // If the goal is completed, have square brackets with an 'X' inside, if not, do not have that 'X'.
+        string completedIndicator = this.IsComplete() ? "[X]" : "[ ]";
+
+        return $"{completedIndicator} {this.GetDetailsString()}";
     }
 }

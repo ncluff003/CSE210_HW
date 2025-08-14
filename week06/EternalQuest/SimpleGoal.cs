@@ -12,21 +12,35 @@ public class SimpleGoal : Goal
 
     public override void RecordEvent()
     {
+        this.MarkAsComplete();
         return;
+    }
+
+    public override string WriteDetails()
+    {
+        return $"Simple Goal:{this.RetrieveGoal()}|{this.RetrieveDescription()}|{this.RetrievePoints()}|{this._isComplete}";
     }
 
     public override Boolean IsComplete()
     {
-        return false;
+        return this._isComplete;
     }
 
-    public string GetDetailsString()
+    public void MarkAsComplete()
     {
-        return "";
+        this._isComplete = true;
+    }
+
+    public override string GetDetailsString()
+    {
+        return $"{this.RetrieveGoal()} ({this.RetrieveDescription()})";
     }
 
     public override string GetStringRepresentation()
     {
-        return "";
+        // If the goal is completed, have square brackets with an 'X' inside, if not, do not have that 'X'.
+        string completedIndicator = this._isComplete ? "[X]" : "[ ]";
+
+        return $"{completedIndicator} {this.GetDetailsString()}";
     }
 }

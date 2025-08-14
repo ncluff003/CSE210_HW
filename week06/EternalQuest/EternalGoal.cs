@@ -10,18 +10,25 @@ public class EternalGoal : Goal
         return;
     }
 
+    public override string WriteDetails()
+    {
+        return $"Eternal Goal:{this.RetrieveGoal()}|{this.RetrieveDescription()}|{this.RetrievePoints()}";
+    }
+
     public override Boolean IsComplete()
     {
         return false;
     }
 
-    public string GetDetailsString()
+    public override string GetDetailsString()
     {
-        return "";
+        return $"{this.RetrieveGoal()} ({this.RetrieveDescription()})";
     }
 
     public override string GetStringRepresentation()
     {
-        return "";
+        string completedIndicator = "[ ]";
+
+        return $"{completedIndicator} {this.GetDetailsString()}";
     }
 }
